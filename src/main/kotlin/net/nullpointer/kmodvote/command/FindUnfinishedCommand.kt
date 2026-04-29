@@ -18,10 +18,10 @@ class FindUnfinishedCommand(
     SlashCommandInteractionEvent::class.java
 ) {
     override suspend fun onCommand(event: SlashCommandInteractionEvent): Boolean {
+        event.deferReply(true).await()
         val res = voteService.findUnfinishedVotes()
-        if (res.isEmpty()) event.reply("Незавершенные голосования не найдены")
-            .setEphemeral(true).await()
-        else event.reply(
+        if (res.isEmpty()) event.hook.editOriginal("Незавершенные голосования не найдены").await()
+        else event.hook.editOriginal(
             "Список незавершенных голосований:\n" +
                     res.joinToString("\n") { vote -> getMessageUrl(vote.messageId) })
             .await()

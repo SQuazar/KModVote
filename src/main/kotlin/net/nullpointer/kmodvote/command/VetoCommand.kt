@@ -17,12 +17,13 @@ class VetoCommand(
     MessageContextInteractionEvent::class.java,
 ) {
     override suspend fun onCommand(event: MessageContextInteractionEvent): Boolean {
+        event.deferReply(true).await()
         voteService.findVote(event.target.idLong)?.let { vote ->
             voteService.closeVote(vote, resultProvider(event))
-            event.reply("Вы воспользовались правом вето")
-                .setEphemeral(true)
-                .await()
-        } ?: event.reply("Голосование не найдено или завершено").await()
+            event.hook.editOriginal(
+                "Вы восопльзовались правом вето!"
+            ).await()
+        } ?: event.hook.editOriginal("Голосование не найдено или завершено")
 
         return true
     }
