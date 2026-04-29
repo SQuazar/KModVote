@@ -38,7 +38,7 @@ tasks.shadowJar {
     version = "${project.version}"
 
     manifest {
-        attributes["Main-Class"] = "net.nullpointer.kmodvote.Mainkt"
+        attributes["Main-Class"] = "net.nullpointer.kmodvote.MainKt"
     }
 }
 
