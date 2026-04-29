@@ -1,0 +1,34 @@
+[versions]
+kotlin = "2.2.21"
+kotlin-coroutines = "1.10.2"
+shadow = "8.1.1"
+bson = "5.6.4"
+kotlinx-datetime = "0.6.1"
+
+jda = "6.3.1"
+kotlin-serialization = "1.10.0"
+quartz = "2.5.2"
+caffeine = "3.2.3"
+mongo = "5.6.4"
+logback = "1.5.32"
+jda-ktx = "0.14.1"
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
+
+[libraries]
+jda = { module = "net.dv8tion:JDA", version.ref = "jda" }
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+quartz = { module = "org.quartz-scheduler:quartz", version.ref = "quartz" }
+caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version.ref = "caffeine" }
+mongo = { module = "org.mongodb:mongodb-driver-kotlin-coroutine", version.ref = "mongo" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+jda-ktx = { module = "club.minnced:jda-ktx", version.ref = "jda-ktx" }
+bson = { module = "org.mongodb:bson-kotlinx", version.ref = "bson" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime"}
+
+[bundles]
+jda = ["jda", "jda-ktx", "logback"]
