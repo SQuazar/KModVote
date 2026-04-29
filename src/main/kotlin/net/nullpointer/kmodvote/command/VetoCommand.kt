@@ -23,7 +23,7 @@ class VetoCommand(
             event.hook.editOriginal(
                 "Вы восопльзовались правом вето!"
             ).await()
-        } ?: event.hook.editOriginal("Голосование не найдено или завершено")
+        } ?: event.hook.editOriginal("Голосование не найдено").await()
 
         return true
     }
